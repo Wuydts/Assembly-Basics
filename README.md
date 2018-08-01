@@ -1,5 +1,3 @@
-# Assembly-Basics
-
 Collection of programming samples from when I was learning Assembly
 
 ## Project Listing:
