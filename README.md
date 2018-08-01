@@ -10,3 +10,4 @@ Collection of programming samples from when I was learning Assembly
 |  [Random Number Generation](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/randomgen/randomgen.asm) |  Easy | 
  [Push and Pop](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/push-pop/push-pop.asm) |  Easy | 
 |  [Simple Math](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/simple_math/simple_math.asm) |  Easy | 
+|  [Variables and Memory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/variables_and_memory/variables_and_memory.asm) |  Easy | 
