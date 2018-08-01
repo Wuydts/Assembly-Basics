@@ -1,0 +1,238 @@
+%include "/usr/share/csc314/asm_io.inc"
+
+
+segment .data
+	format	db	"Hamming distance = %d",10,0
+
+	enter_value	db	"Enter a word 4 characters long",10,0
+
+segment .bss
+	myCounter		resd	1
+	myArr			resb	5	; would recomend "resb" here instead, because bytes, not dwords
+	myArr2			resb	5	; same here of course
+								;
+								; That said... you probably can make it work like this, and changing
+								; it will require a few other changes too (i.e. the [ebp + ecx * 4]'s)
+								; I'd still recomend changing it, but might not be absolutely necessary
+
+segment .text
+	global  asm_main
+	extern	printf
+
+asm_main:
+	enter	0,0
+	pusha
+	;***************CODE STARTS HERE***************************
+
+	; These four comments below are where I think your segfaults (at least right now),
+	; are coming from.  This is priority #1.
+
+	;READ FIRST WORD
+	push	DWORD[myCounter]
+	push	myArr	; This pushes the value of the 0th element.  Did you mean just the pointer instead?
+	call	readWords
+	add		esp, 8
+
+	;READ SECOND WORD
+	push	DWORD[myCounter]
+	push	myArr2	; Same here. Should this maybe be "push myArr2" instead?
+	call	readWords2
+	add		esp, 8
+
+
+
+	;PRINT FIRST WORD
+	push	DWORD[myCounter]
+	push	myArr	; Same here.  Probably should push the pointer I think.
+	call	printWords
+	add		esp, 8
+
+	;PRINT SECOND WORD
+	push	DWORD[myCounter]
+	push	myArr2	; Same here, etc
+	call	printWords2
+	add		esp, 8
+
+
+
+
+	;HAMDIST
+;	push	myArr ; Second Word	; Same thing here.  Recommend pointer
+;	push	myArr2  ; First Word	; And here
+;	call	hamdist
+;	push	eax
+;	push	format ; "The ham distance =...
+;	call	printf ; print it out
+;	add		esp, 8 ; clear out the parameters
+
+	;***************CODE ENDS HERE*****************************
+	popa
+	mov	eax, 0
+	leave
+	ret
+
+printWords:
+	mov		ecx, 0
+
+	print_loop:
+	cmp		ecx, 4
+	jge		end_print_loop
+
+
+		mov		edi, myArr
+		mov		ah,  BYTE[myArr + ecx * 4]
+		call	print_char
+		inc		ecx
+		jmp		print_loop
+
+	end_print_loop:
+	call	print_nl
+	ret
+
+
+printWords2:
+	mov		ecx, 0
+
+	print_loop2:
+	cmp		ecx, 4
+	jge		end_print_loop2
+
+		mov		edi, myArr
+		mov		al,  BYTE[myArr + ecx * 4]
+
+	;	mov		eax, DWORD[myArr2 + ecx * 4]
+		call	print_char
+		inc		ecx
+		jmp		print_loop2
+
+	end_print_loop2:
+	call	print_nl
+	ret
+
+
+
+readWords:
+
+
+	mov		eax, enter_value
+	call	print_string
+	mov		DWORD[myCounter], 0
+
+	read_character_loop:
+	cmp		DWORD[myCounter], 4
+	jge		read_character_end
+
+	call	read_char
+
+	mov		ebx, DWORD[myCounter]
+	mov		DWORD[myArr + ebx * 4], eax
+;	mov		eax, DWORD[myArr + ebx * 4]
+	inc 	DWORD[myCounter]
+
+	jmp		read_character_loop
+
+	read_character_end:
+	call	print_nl
+	call	read_char
+	ret
+
+
+
+readWords2:
+
+
+	mov		eax, enter_value
+	call	print_string
+	mov		DWORD[myCounter], 0
+
+	read_character_loop2:
+	cmp		DWORD[myCounter], 4
+	jge		read_character_end2
+
+	call	read_char
+
+	mov		ebx, DWORD[myCounter]
+	mov		DWORD[myArr2 + ebx * 4], eax
+;	mov		eax, DWORD[myArr + ebx * 4]
+
+	inc 	DWORD[myCounter]
+
+	jmp		read_character_loop2
+
+	read_character_end2:
+
+	call	print_nl
+	call	read_char
+	ret
+
+
+
+hamdist:
+	;PROLOGUE
+	push	ebp ; save my current ebp value
+	mov		ebp, esp ; set my frame pointer
+	sub		esp, 8 ;two local variables.
+
+	;LOOP SETUP
+
+	mov		DWORD[ebp -4], 0 ; Putting 0 into local variable 1 THIS IS MY FOR COUNTER
+	mov		DWORD[ebp -8], 0 ; Putting 0 into local variable 2 THIS IS MY UNMATCHED COUNTER
+	mov		ecx, DWORD[ebp -4]
+
+	jmp	first_time
+
+    loop_start:
+		inc		ecx
+	first_time:
+	; Although this will probably work, for this assignment make sure you push those two
+	; string pointers to the function as stack parameters and then reference them using
+	; ebp.  That will ensure your function is generic enough to be plug-and-play'ed into
+	; other code without needing to know about dependencies like "myArr", you know?
+	; You'll probably want to do this like...
+	;
+	; push	myArr
+	; push	myArr2
+	; call	hamdist
+	; add	esp, 8
+	;
+	; hamdist:
+	; ...
+	; 	mov		edi, DWORD [ebp + 8]	; grab the *pointer* to myArr
+	;	mov		al, BYTE [edi + ecx]	; grab the *byte* at offset ecx
+	; 	mov		esi, DWORD [ebp + 12]	; grab the *pointer* to myArr2
+	; 	mov		bl, BYTE [esi + ecx]	; grab the *byte* at offset ecx
+	;	cmp		al, bl
+	; ...
+	; etc
+
+	mov		edi, DWORD[ebp + 8]
+	mov		al,  BYTE[edi + ecx]
+	mov		esi, DWORD[ebp +12]
+	mov		bl,  BYTE[esi + ecx]
+	cmp		al, bl
+
+	je		skip_this	; if equal skip this
+
+	;OTHERWISE
+
+		inc	DWORD[ebp -8] ; incrament the unmatched counter
+
+	skip_this:
+	dump_regs 1
+
+	cmp 	ecx, 3
+	jge		loop_end
+
+		jmp		loop_start
+
+	loop_end:
+
+
+
+
+	;EPILOGUE
+	mov		eax, DWORD[ebp -8] ; store the return value in EAX
+	mov		esp, ebp			;destroy stack frame
+	pop		ebp					;restore old ebp
+
+	ret
