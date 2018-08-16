@@ -5,7 +5,7 @@ Collection of programming samples from when I was learning Assembly
 | - | - | - |
 | Read and Print Function| [Read and Print ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/read-print-func/read-print-func.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/read-print-func)|
 | Variables and Memory| [Variables and Memory ASM](https://github.com/Wuydts/Assembly_Basics/blob/master/Assembly%20Basics/variables_and_memory/variables_and_memory.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/variables_and_memory)|
-|  Switch Cases|[Switch Cases Directory](https://github.com/Wuydts/AssemblyBasics/blob/master/Assembly%20Basics/switchcase/switchcase.asm) 
+|  Switch Cases|[Switch Case ASM](https://github.com/Wuydts/Assembly_Basics/blob/master/Assembly%20Basics/switchcase/switchcase.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/switchcase)|
 | Push and Pop|[Push and Pop Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/push-pop/push-pop.asm) |   
 |  Simple Math|[Math Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/simple_math/simple_math.asm) |  
 |  Random Number Generator| [Random Number Generator Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/randomgen/randomgen.asm) |  
