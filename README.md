@@ -14,6 +14,6 @@ Collection of programming samples from when I was learning Assembly
 |  Encryption and Decryption|[Encryption and Decryption ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/encyption/encyption.asm) | [Directory]( https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/encyption)|
 |  Bubble Sort|[Bubble Sort ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/sorting/sorting.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/sorting)|
 |  Hamming Distance| [Hamming Distance ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/hamdist/hamdist.asm) |[Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/hamdist)|
-|  Maze| [Maze Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/maze/maze.asm) |  
+|  Maze| [Maze ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/maze/maze.asm) | [Directory]( https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/maze)|
 
 
