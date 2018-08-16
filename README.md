@@ -12,7 +12,7 @@ Collection of programming samples from when I was learning Assembly
 |  Basic System Call|[Basic System Call ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/syscall/syscall.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/syscall)|
 | Advanced System Call|[Advanced System Call ASM](https://github.com/Wuydts/Assembly_Basics/blob/master/Assembly%20Basics/syscall_more_complex/syscall_morecomplex.asm)|[Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/syscall_more_complex)|
 |  Encryption and Decryption|[Encryption and Decryption ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/encyption/encyption.asm) | [Directory]( https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/encyption)|
-|  Bubble Sort|[Bubble Sort Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/sorting/sorting.asm) | 
+|  Bubble Sort|[Bubble Sort ASM](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/sorting/sorting.asm) | [Directory](https://github.com/Wuydts/Assembly_Basics/tree/master/Assembly%20Basics/sorting)|
 |  Hamming Distance| [Hamming Distance Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/hamdist/hamdist.asm) |
 |  Maze| [Maze Directory](https://github.com/Wuydts/Assembly-Basics/blob/master/Assembly%20Basics/maze/maze.asm) |  
 
